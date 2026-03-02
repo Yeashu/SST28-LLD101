@@ -11,11 +11,12 @@ public class util {
         }
         return subtotal;
     }
-    public static double getTax(String customerType, double subtotal) {
-        double taxPct = TaxRules.taxPercent(customerType);
-        return subtotal * (taxPct / 100.0);
+
+    public static double getLineTotal(MenuItem item, int qty) {
+        return item.price * qty;
     }
-    public static double getDiscount(String customerType, double subtotal, int distinctLines) {
-        return DiscountRules.discountAmount(customerType, subtotal, distinctLines);
+
+    public static double taxFromPercent(double subtotal, double taxPercent) {
+        return subtotal * (taxPercent / 100.0);
     }
 }

@@ -10,11 +10,14 @@ public class Main {
         NotificationSender wa = new WhatsAppSender(audit);
 
         email.send(n);
-        sms.send(n);
-        try {
-            wa.send(n);
-        } catch (RuntimeException ex) {
-            System.out.println("WA ERROR: " + ex.getMessage());
+        SendResult smsResult = sms.send(n);
+        SendResult waResult = wa.send(n);
+        if (smsResult.isError()) {
+            System.out.println("SMS ERROR: " + smsResult.error);
+            audit.add("SMS failed");
+        }
+        if (waResult.isError()) {
+            System.out.println("WA ERROR: " + waResult.error);
             audit.add("WA failed");
         }
 
