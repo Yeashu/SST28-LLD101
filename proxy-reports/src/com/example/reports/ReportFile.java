@@ -6,10 +6,11 @@ package com.example.reports;
  * - Expensive load happens every time display() is called
  * - No access control
  *
- * TODO (student):
+ * Done (student):
  * - Convert this into the RealSubject behind a Proxy, or replace with RealReport.
+ * - Done moved it now this seems to be dead code
  */
-public class ReportFile {
+public class ReportFile{
 
     private final String reportId;
     private final String title;
