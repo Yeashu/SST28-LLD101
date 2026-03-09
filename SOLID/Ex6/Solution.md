@@ -1,0 +1,2 @@
+How i solved the issues:
+Made notification sender send funciton non-abstract , added isValid(), getSendableNotification(), abstract doSend() these help define a contract but i still think there are still suprises in Sms where it truncates message, In WA sender it imposes extra restrictions

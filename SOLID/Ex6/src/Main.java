@@ -9,18 +9,18 @@ public class Main {
         NotificationSender sms = new SmsSender(audit);
         NotificationSender wa = new WhatsAppSender(audit);
 
-        email.send(n);
-        SendResult smsResult = sms.send(n);
-        SendResult waResult = wa.send(n);
-        if (smsResult.isError()) {
-            System.out.println("SMS ERROR: " + smsResult.error);
-            audit.add("SMS failed");
-        }
-        if (waResult.isError()) {
-            System.out.println("WA ERROR: " + waResult.error);
-            audit.add("WA failed");
-        }
+        printIfError(email.send(n));
+        printIfError(sms.send(n));
+        printIfError(wa.send(n));
 
         System.out.println("AUDIT entries=" + audit.size());
     }
+
+    public static void printIfError(SendResult r) {
+        if (r.isError()) {
+            System.out.println(r.error);
+        }
+    }
+
 }
+
