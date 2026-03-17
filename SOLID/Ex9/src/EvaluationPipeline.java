@@ -1,10 +1,22 @@
 public class EvaluationPipeline {
-    // DIP violation: high-level module constructs concretes directly
+    IPlagiarismChecker pc;
+    IGrader grader;
+    IReportWriter writer;
+    Rubric rubric;
+
+    public EvaluationPipeline(IPlagiarismChecker pc, IGrader grader, IReportWriter writer, Rubric rubric) {
+        this.pc = pc;
+        this.grader = grader;
+        this.writer = writer;
+        this.rubric = rubric;
+    }
+
+    // Fixed: DIP violation: high-level module constructs concretes directly
     public void evaluate(Submission sub) {
-        Rubric rubric = new Rubric();
-        PlagiarismChecker pc = new PlagiarismChecker();
-        CodeGrader grader = new CodeGrader();
-        ReportWriter writer = new ReportWriter();
+        // Rubric rubric = new Rubric();
+        // PlagiarismChecker pc = new PlagiarismChecker();
+        // CodeGrader grader = new CodeGrader();
+        // ReportWriter writer = new ReportWriter();
 
         int plag = pc.check(sub);
         System.out.println("PlagiarismScore=" + plag);
