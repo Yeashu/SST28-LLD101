@@ -1,3 +1,6 @@
+How I solved it:
+Separated the fat interface to smaller ones so that objects only have to implement whats required
+
 public interface SmartClassroomDevice {
     // Fat interface (ISP violation) Now changed to just a marker interface
     // void powerOn();
