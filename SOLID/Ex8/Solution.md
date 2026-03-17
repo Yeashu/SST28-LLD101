@@ -1,3 +1,6 @@
+How I solved it:
+Applied Interface Segregation Principle and splitted the fat interface to managable ones based on use-case:
+
 // public interface ClubAdminTools {
 //     // Fat interface (ISP violation)
 //     void addIncome(double amt, String note);
